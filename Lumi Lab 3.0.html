@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>簡煦 Lumi Lab · 煦光智庫</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Noto+Serif+TC:wght@400;600;700&family=Dancing+Script:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #f9f5f0;
+      font-family: 'Inter', 'Noto Serif TC', sans-serif;
+      color: #2d2420;
+      padding: 1.8rem 1.2rem;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+      min-height: 100vh;
+    }
+    body::before {
+      content: "🌿🌸🌾🌷🌱";
+      position: fixed;
+      top: 20px;
+      right: 30px;
+      font-size: 5rem;
+      opacity: 0.10;
+      letter-spacing: 20px;
+      pointer-events: none;
+      transform: rotate(8deg);
+      z-index: 0;
+    }
+    body::after {
+      content: "🌻🌺🍃🌼🌿";
+      position: fixed;
+      bottom: 30px;
+      left: 20px;
+      font-size: 4.2rem;
+      opacity: 0.08;
+      letter-spacing: 15px;
+      pointer-events: none;
+      transform: rotate(-5deg);
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      background: rgba(255, 252, 249, 0.92);
+      backdrop-filter: blur(2px);
+      border-radius: 48px 48px 32px 32px;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.05), 0 8px 24px rgba(180,95,59,0.06);
+      padding: 3.2rem 3.5rem 2.8rem;
+      position: relative;
+      z-index: 1;
+      border: 1px solid rgba(235, 215, 200, 0.3);
+    }
+
+    .floral-divider {
+      text-align: center;
+      font-size: 1.8rem;
+      letter-spacing: 16px;
+      color: #d4b8a5;
+      opacity: 0.5;
+      margin: 0.6rem 0 1rem;
+    }
+
+    .brand-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding-bottom: 1.2rem;
+      margin-bottom: 2.4rem;
+      border-bottom: 2px solid #f0e6df;
+      position: relative;
+    }
+    .brand-header::after {
+      content: '✦';
+      position: absolute;
+      bottom: -16px;
+      left: 0;
+      font-size: 1.8rem;
+      color: #e8c4b0;
+    }
+    .brand-name {
+      font-family: 'Dancing Script', 'Noto Serif TC', cursive;
+      font-weight: 600;
+      font-size: 3.4rem;
+      background: linear-gradient(135deg, #f5cba0, #f0b8a8, #f5cba0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 0.02em;
+      text-shadow: 0 2px 12px rgba(245, 203, 160, 0.2);
+    }
+    .brand-name small {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      -webkit-text-fill-color: #b8a094;
+      background: none;
+      color: #b8a094;
+      margin-left: 0.8rem;
+    }
+    .brand-tagline {
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: #b8a094;
+      letter-spacing: 0.06em;
+      padding: 0.4rem 0;
+      border-top: 1px solid #f0e6df;
+      border-bottom: 1px solid #f0e6df;
+      font-style: italic;
+    }
+
+    .hero-section {
+      background: linear-gradient(145deg, #fdfaf7, #f8f0ea);
+      border-radius: 32px;
+      padding: 2.8rem 3.2rem 3rem;
+      margin-bottom: 2.4rem;
+      border: 1px solid #ede3db;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-section::before {
+      content: "🌿🌸";
+      position: absolute;
+      top: -10px;
+      right: -5px;
+      font-size: 6rem;
+      opacity: 0.08;
+      transform: rotate(15deg);
+      pointer-events: none;
+    }
+    .hero-title {
+      font-family: 'Noto Serif TC', serif;
+      font-weight: 700;
+      font-size: 2.4rem;
+      color: #2d2420;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-title .highlight-text {
+      background: linear-gradient(135deg, #f5cba0, #f0b8a8);
+      padding: 0.1rem 1.2rem;
+      border-radius: 40px;
+      display: inline-block;
+    }
+    .hero-sub {
+      color: #7a6a5e;
+      font-size: 1.2rem;
+      margin: 0.5rem 0 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.6rem 2.4rem;
+      position: relative;
+      z-index: 1;
+    }
+    .form-grid .full { grid-column: 1 / -1; }
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      font-size: 1.05rem;
+      letter-spacing: 0.04em;
+      color: #5a4a3e;
+      margin-bottom: 0.4rem;
+    }
+    .form-group label .required { color: #e8b4a0; margin-left: 0.2rem; }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 1rem 1.4rem;
+      background: #ffffff;
+      border: 1.5px solid #ede3db;
+      border-radius: 40px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1.1rem;
+      transition: 0.3s;
+      outline: none;
+      color: #2d2420;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: #f0c8b4;
+      box-shadow: 0 0 0 4px rgba(240, 200, 180, 0.15);
+    }
+    .form-group textarea {
+      border-radius: 24px;
+      min-height: 100px;
+      resize: vertical;
+      line-height: 1.8;
+    }
+    .form-group .hint {
+      font-size: 0.95rem;
+      color: #b8a094;
+      margin-top: 0.3rem;
+    }
+    .form-group .char-count {
+      font-size: 0.9rem;
+      color: #c4b4a8;
+      text-align: right;
+      margin-top: 0.2rem;
+    }
+
+    .btn-generate {
+      background: linear-gradient(135deg, #f5cba0, #f0b8a8);
+      color: #2d2420;
+      border: none;
+      padding: 1rem 4rem;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: 0.3s;
+      letter-spacing: 0.03em;
+      font-family: 'Inter', sans-serif;
+      margin-top: 0.6rem;
+      box-shadow: 0 4px 16px rgba(240, 200, 180, 0.3);
+    }
+    .btn-generate:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(240, 200, 180, 0.4);
+    }
+
+    .industry-examples {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin: 0.6rem 0 0.2rem;
+      position: relative;
+      z-index: 1;
+    }
+    .industry-examples .ex-tag {
+      background: #f5ede8;
+      padding: 0.3rem 1.6rem;
+      border-radius: 40px;
+      font-size: 1rem;
+      color: #6b5a4e;
+      border: 1px solid #ede3db;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .industry-examples .ex-tag:hover {
+      background: #f0e0d6;
+      border-color: #e8c4b0;
+    }
+
+    /* ===== 報告區 ===== */
+    #reportContainer {
+      margin-top: 2.4rem;
+      display: none;
+      animation: fadeUp 0.7s ease;
+    }
+    @keyframes fadeUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .report-card {
+      background: #fdfaf8;
+      border-radius: 32px;
+      padding: 3rem 3.4rem 3rem;
+      border: 1px solid #ede3db;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.04);
+      position: relative;
+    }
+    .report-card::before {
+      content: "🌸🌿";
+      position: absolute;
+      top: 12px;
+      right: 20px;
+      font-size: 3rem;
+      opacity: 0.12;
+      letter-spacing: 6px;
+    }
+
+    .personal-message {
+      background: linear-gradient(135deg, #fdf6f0, #f8ede6);
+      border-radius: 24px;
+      padding: 2rem 2.6rem;
+      margin-bottom: 2.4rem;
+      border-left: 6px solid #f0c8b4;
+      position: relative;
+    }
+    .personal-message .pm-greeting {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.8rem;
+      color: #c4957a;
+      margin-bottom: 0.4rem;
+    }
+    .personal-message .pm-content {
+      font-size: 1.2rem;
+      color: #3d322c;
+      line-height: 2;
+    }
+    .personal-message .pm-content .highlight-pink { color: #dba890; font-weight: 600; }
+
+    .report-chapter {
+      margin-bottom: 2.4rem;
+    }
+    .report-chapter .ch-number {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #dba890;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.2rem;
+    }
+    .report-chapter .ch-title {
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: #2d2420;
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .report-chapter .ch-title .ch-line {
+      flex: 1;
+      height: 1px;
+      background: #ede3db;
+      max-width: 60px;
+    }
+    .report-chapter .ch-body {
+      font-size: 1.15rem;
+      color: #3d322c;
+      line-height: 2;
+      padding-left: 0.2rem;
+    }
+    .report-chapter .ch-body .highlight { color: #dba890; font-weight: 600; }
+
+    /* ===== 行動指南 ===== */
+    .action-guide {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 2rem 2.4rem;
+      margin-bottom: 2rem;
+      border: 1.5px solid #ede3db;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      transition: 0.2s;
+    }
+    .action-guide:hover { border-color: #e8c4b0; box-shadow: 0 6px 18px rgba(0,0,0,0.05); }
+    .action-guide .ag-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.6rem;
+    }
+    .action-guide .ag-header .ag-num {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #dba890;
+      background: #f5ede8;
+      padding: 0.2rem 1.2rem;
+      border-radius: 40px;
+    }
+    .action-guide .ag-header .ag-name {
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: #2d2420;
+    }
+    .action-guide .ag-desc {
+      font-size: 1.15rem;
+      color: #3d322c;
+      margin: 0.4rem 0 0.6rem;
+      line-height: 1.9;
+    }
+    .ag-steps {
+      background: #f8f5f2;
+      border-radius: 18px;
+      padding: 1rem 1.8rem;
+      margin: 0.6rem 0;
+    }
+    .ag-steps .step-item {
+      padding: 0.4rem 0;
+      border-bottom: 1px dashed #ede3db;
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+    .ag-steps .step-item:last-child { border-bottom: none; }
+    .ag-steps .step-item .step-label { font-weight: 600; color: #2d2420; }
+    .ag-steps .step-item .step-detail { color: #4d3e34; }
+
+    .ag-why {
+      background: #f8f0ea;
+      padding: 0.8rem 1.6rem;
+      border-radius: 18px;
+      font-size: 1.05rem;
+      color: #5a4a3e;
+      margin: 0.6rem 0;
+      border-left: 4px solid #f0c8b4;
+    }
+    .ag-why strong { color: #2d2420; }
+    .ag-data {
+      font-size: 1rem;
+      color: #7a6a5e;
+      margin: 0.4rem 0;
+      padding: 0.3rem 0;
+    }
+    .ag-data .data-link {
+      color: #dba890;
+      text-decoration: none;
+      border-bottom: 1.5px dashed #e8c4b0;
+      font-weight: 500;
+    }
+    .ag-data .data-link:hover { color: #c4957a; }
+    .ag-trend {
+      background: #fdfaf7;
+      border-radius: 16px;
+      padding: 0.7rem 1.6rem;
+      margin: 0.4rem 0;
+      border: 1.5px solid #ede3db;
+      font-size: 1rem;
+      color: #5a4a3e;
+    }
+    .ag-trend .trend-highlight { color: #dba890; font-weight: 600; }
+    .ag-celebrity {
+      background: #fdfaf7;
+      border-radius: 16px;
+      padding: 0.7rem 1.6rem;
+      margin: 0.4rem 0;
+      border-left: 4px solid #dba890;
+      font-size: 1rem;
+      color: #5a4a3e;
+      font-style: italic;
+    }
+    .ag-celebrity .celebrity-name { font-weight: 600; color: #2d2420; font-style: normal; }
+    .ag-path {
+      background: #fdfaf7;
+      border-radius: 18px;
+      padding: 0.9rem 1.8rem;
+      margin: 0.6rem 0 0.3rem;
+      border: 1.5px dashed #ede3db;
+      font-size: 1.05rem;
+      color: #5a4a3e;
+    }
+    .ag-path .path-link {
+      color: #dba890;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .ag-path .path-link:hover { text-decoration: underline; }
+    .ag-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.4rem;
+      margin-top: 0.8rem;
+      padding-top: 0.6rem;
+      border-top: 1px solid #f0e6df;
+      font-size: 0.95rem;
+      color: #8a7a6d;
+    }
+    .ag-meta .meta-tag {
+      background: #f5ede8;
+      padding: 0.1rem 1rem;
+      border-radius: 40px;
+      color: #5a4a3e;
+    }
+
+    /* 量化目標 */
+    .goal-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem 1.6rem;
+      margin: 0.6rem 0;
+    }
+    .goal-list .goal-item {
+      background: #f8f0ea;
+      border-radius: 20px;
+      padding: 1rem 1.6rem;
+      font-size: 1.1rem;
+      color: #3d322c;
+      border-left: 4px solid #f0c8b4;
+    }
+    .goal-list .goal-item .goal-priority {
+      font-weight: 600;
+      color: #dba890;
+      font-size: 0.95rem;
+      display: block;
+      margin-top: 0.2rem;
+    }
+    .goal-list .goal-item .goal-explain {
+      font-size: 0.98rem;
+      color: #7a6a5e;
+      display: block;
+      margin-top: 0.2rem;
+      line-height: 1.7;
+    }
+    .goal-list .goal-item .goal-link {
+      font-size: 0.9rem;
+      color: #dba890;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 0.2rem;
+    }
+    .goal-list .goal-item .goal-link:hover { text-decoration: underline; }
+
+    .encouragement-block {
+      background: linear-gradient(135deg, #fdf6f0, #f8ede6);
+      border-radius: 24px;
+      padding: 2.4rem 2.8rem;
+      margin: 2rem 0 1.4rem;
+      text-align: center;
+      border: 1px solid #ede3db;
+      position: relative;
+      overflow: hidden;
+    }
+    .encouragement-block::before {
+      content: "🌸🌿🌷🌱🌾";
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      font-size: 5rem;
+      opacity: 0.08;
+      transform: rotate(10deg);
+      pointer-events: none;
+    }
+    .encouragement-block .eb-pattern {
+      font-size: 4rem;
+      letter-spacing: 10px;
+      opacity: 0.6;
+      margin-bottom: 0.4rem;
+    }
+    .encouragement-block .eb-message {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.2rem;
+      color: #c4957a;
+      line-height: 1.8;
+      position: relative;
+      z-index: 1;
+    }
+
+    .brand-closing {
+      text-align: center;
+      padding: 2rem 0 1rem;
+      border-top: 2px solid #f0e6df;
+      margin-top: 1.8rem;
+    }
+    .brand-closing .bc-name {
+      font-family: 'Dancing Script', cursive;
+      font-weight: 600;
+      font-size: 3.4rem;
+      background: linear-gradient(135deg, #f5cba0, #f0b8a8, #f5cba0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .brand-closing .bc-slogan {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.6rem;
+      color: #d4b8a5;
+      letter-spacing: 0.06em;
+      margin-top: 0.2rem;
+      -webkit-text-fill-color: #d4b8a5;
+    }
+
+    .joy-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.6rem;
+      margin-top: 1.8rem;
+      padding-top: 1.6rem;
+      border-top: 1px solid #f0e6df;
+    }
+    .joy-section .joy-item {
+      flex: 1;
+      min-width: 220px;
+      background: #fdfaf7;
+      border-radius: 22px;
+      padding: 1.4rem 2rem;
+      border: 1px solid #ede3db;
+    }
+    .joy-section .joy-item .joy-label {
+      font-size: 0.95rem;
+      letter-spacing: 0.06em;
+      color: #b8a094;
+      margin-bottom: 0.3rem;
+    }
+    .joy-section .joy-item .joy-content {
+      font-size: 1.2rem;
+      color: #2d2420;
+    }
+    .joy-section .joy-item .joy-content .song-artist {
+      font-size: 1rem;
+      color: #b8a094;
+      display: block;
+      margin-top: 0.2rem;
+    }
+
+    /* ===== MBTI 獨立區塊 ===== */
+    .mbti-section {
+      margin-top: 3.2rem;
+      padding-top: 2.4rem;
+      border-top: 1px solid #f0e6df;
+    }
+    .mbti-section .section-label {
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      color: #c4b4a8;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+    .mbti-block {
+      background: #fdfaf7;
+      border-radius: 24px;
+      padding: 2.2rem 2.6rem;
+      border: 1.5px solid #ede3db;
+    }
+    .mbti-block .mbti-title {
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: #2d2420;
+      margin-bottom: 0.4rem;
+    }
+    .mbti-block .mbti-title .mbti-icon { font-size: 2rem; margin-right: 0.6rem; }
+    .mbti-block .mbti-body {
+      font-size: 1.15rem;
+      color: #3d322c;
+      line-height: 2;
+    }
+    .mbti-block .mbti-body .mbti-highlight { color: #dba890; font-weight: 600; }
+
+    /* ===== 塔羅牌獨立區塊 ===== */
+    .tarot-section {
+      margin-top: 2.2rem;
+      padding-top: 2rem;
+      border-top: 1px solid #f0e6df;
+    }
+    .tarot-section .section-label {
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      color: #c4b4a8;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+    .tarot-block {
+      background: linear-gradient(145deg, #faf5f0, #f5ede8);
+      border-radius: 24px;
+      padding: 2.4rem 2.8rem;
+      border: 1.5px solid #ede3db;
+      text-align: center;
+      position: relative;
+    }
+    .tarot-block .tarot-title {
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: #2d2420;
+      margin-bottom: 0.2rem;
+    }
+    .tarot-block .tarot-sub {
+      font-size: 1.1rem;
+      color: #7a6a5e;
+      margin-bottom: 1rem;
+    }
+    .tarot-block .tarot-btn {
+      background: linear-gradient(135deg, #f5cba0, #f0b8a8);
+      border: none;
+      padding: 0.9rem 3.2rem;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: #2d2420;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 4px 12px rgba(240, 200, 180, 0.25);
+    }
+    .tarot-block .tarot-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(240, 200, 180, 0.35);
+    }
+    .tarot-block .tarot-result {
+      margin-top: 1.8rem;
+      display: none;
+      animation: fadeUp 0.6s ease;
+    }
+    .tarot-block .tarot-result .tarot-card-display {
+      font-size: 6rem;
+      display: block;
+      margin-bottom: 0.4rem;
+      background: #fdfaf7;
+      padding: 0.6rem;
+      border-radius: 24px;
+      border: 2px solid #ede3db;
+      max-width: 220px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .tarot-block .tarot-result .tarot-name {
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: #2d2420;
+      margin-top: 0.4rem;
+    }
+    .tarot-block .tarot-result .tarot-meaning {
+      font-size: 1.1rem;
+      color: #3d322c;
+      line-height: 2;
+      margin-top: 0.6rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      background: #fdfaf7;
+      padding: 1rem 1.8rem;
+      border-radius: 20px;
+      border: 1px solid #ede3db;
+      text-align: left;
+    }
+    .tarot-block .tarot-result .tarot-meaning .meaning-section {
+      margin: 0.5rem 0;
+    }
+    .tarot-block .tarot-result .tarot-meaning .meaning-section strong {
+      color: #dba890;
+    }
+
+    /* ===== 戰略情報庫 ===== */
+    .secondary-section {
+      margin-top: 3.2rem;
+      padding-top: 2.4rem;
+      border-top: 1px solid #f0e6df;
+    }
+    .secondary-section .sec-label {
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      color: #c4b4a8;
+      text-transform: uppercase;
+      margin-bottom: 1.4rem;
+    }
+    .library-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.6rem;
+      margin-bottom: 1.8rem;
+    }
+    .lib-card {
+      background: #fdfaf7;
+      border-radius: 22px;
+      padding: 1.8rem 2rem;
+      border: 1px solid #ede3db;
+    }
+    .lib-card .lc-title {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #2d2420;
+    }
+    .lib-card .lc-title .lc-badge {
+      font-weight: 400;
+      font-size: 0.8rem;
+      color: #b8a094;
+      background: #f0e6df;
+      padding: 0.1rem 0.8rem;
+      border-radius: 40px;
+      margin-left: 0.4rem;
+    }
+    .lib-card .lc-desc {
+      font-size: 1rem;
+      color: #5a4a3e;
+      margin: 0.4rem 0 0.6rem;
+      line-height: 1.7;
+    }
+    .lib-card .lc-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+    .lib-card .lc-links a {
+      font-size: 0.95rem;
+      color: #dba890;
+      text-decoration: none;
+      border-bottom: 1px dashed #ede3db;
+      padding-bottom: 0.2rem;
+    }
+    .lib-card .lc-links a:hover { color: #c4957a; text-decoration: underline; }
+
+    .footer-note {
+      margin-top: 2.8rem;
+      border-top: 1px solid #f0e6df;
+      padding-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1.4rem;
+      color: #b8a094;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 700px) {
+      .container { padding: 1.8rem 1.4rem; }
+      .brand-name { font-size: 2.6rem; }
+      .hero-section { padding: 2rem; }
+      .form-grid { grid-template-columns: 1fr; }
+      .report-card { padding: 1.8rem; }
+      .goal-list { grid-template-columns: 1fr; }
+      .joy-section { flex-direction: column; }
+      .brand-closing .bc-name { font-size: 2.6rem; }
+      .library-grid { grid-template-columns: 1fr; }
+      .action-guide { padding: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ===== HEADER ===== -->
+  <div class="brand-header">
+    <div class="brand-name">簡煦 Lumi Lab <small>· 煦光智庫</small></div>
+    <div class="brand-tagline">✦ 溫暖 · 專業 · 靈感 ✦</div>
+  </div>
+
+  <div class="floral-divider">✧ ～ ✿ ～ ✧</div>
+
+  <!-- ============================================================ -->
+  <!--  ★ 核心：報告生成區                                          -->
+  <!-- ============================================================ -->
+  <div class="hero-section">
+    <div class="hero-title">✦ 為你 <span class="highlight-text">量身打造</span> 的戰略報告</div>
+    <div class="hero-sub">
+      填寫以下資訊，我們將為你產出 <strong>極度具體、專業、可落地</strong> 的專屬行動指南
+    </div>
+
+    <form id="reportForm" onsubmit="return false;">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>產業 / 市場 <span class="required">*</span></label>
+          <input type="text" id="industry" placeholder="ex: 電商、半導體、餐飲" />
+          <div class="hint">💡 參考範例：</div>
+          <div class="industry-examples">
+            <span class="ex-tag" onclick="document.getElementById('industry').value='永續時尚電商'">永續時尚電商</span>
+            <span class="ex-tag" onclick="document.getElementById('industry').value='精品咖啡品牌'">精品咖啡品牌</span>
+            <span class="ex-tag" onclick="document.getElementById('industry').value='AI 行銷科技新創'">AI 行銷科技新創</span>
+            <span class="ex-tag" onclick="document.getElementById('industry').value='寵物用品訂閱制'">寵物用品訂閱制</span>
+            <span class="ex-tag" onclick="document.getElementById('industry').value='身心靈療癒平台'">身心靈療癒平台</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>公司規模 <span class="required">*</span></label>
+          <select id="scale">
+            <option value="">請選擇</option>
+            <option value="新創 · 1–50 人">新創 · 1–50 人</option>
+            <option value="中小企業 · 50–500 人">中小企業 · 50–500 人</option>
+            <option value="大型企業 · 500+ 人">大型企業 · 500+ 人</option>
+          </select>
+        </div>
+
+        <div class="form-group full">
+          <label>請描述你的公司／業務（越詳細越好）<span class="required">*</span></label>
+          <textarea id="businessDesc" placeholder="請至少輸入 30 字，描述你的公司在做什麼、服務誰、有什麼特色、目前的階段..." oninput="updateCharCount(this)"></textarea>
+          <div class="char-count"><span id="charCount">0</span> / 30 字</div>
+        </div>
+
+        <div class="form-group full">
+          <label>現在最讓你煩惱的問題是什麼？<span class="required">*</span></label>
+          <textarea id="worries" placeholder="請具體描述你現在最困擾的事情，例如：『品牌知名度一直拉不起來，不知道該從哪裡開始』『團隊士氣低迷，業績停滯』... 我們會針對你的擔憂給予專屬鼓勵與建議"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>主要顧客輪廓</label>
+          <input type="text" id="customer" placeholder="ex: 25–40 歲都會女性，重視設計與永續" />
+        </div>
+        <div class="form-group">
+          <label>主要競爭對手</label>
+          <input type="text" id="competitor" placeholder="ex: 國內 3 家電商平台" />
+        </div>
+
+        <div class="form-group">
+          <label>預算範圍 (NTD)</label>
+          <select id="budget">
+            <option value="0–1,000">0 – 1,000</option>
+            <option value="1,000–5,000">1,000 – 5,000</option>
+            <option value="5,000–10,000">5,000 – 10,000</option>
+            <option value="10,000–50,000" selected>10,000 – 50,000</option>
+            <option value="50,000–100,000">50,000 – 100,000</option>
+            <option value="100,000–500,000">100,000 – 500,000</option>
+            <option value="500,000+">500,000 以上</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>預期時間軸</label>
+          <select id="timeline">
+            <option value="緊急 · 1–3 個月">緊急 · 1–3 個月</option>
+            <option value="中期 · 3–12 個月" selected>中期 · 3–12 個月</option>
+            <option value="長期 · 1 年以上">長期 · 1 年以上</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>AI / 新技術偏好</label>
+          <select id="aiPref">
+            <option value="最適技術組合">自動推薦最適技術</option>
+            <option value="Agentic AI 代理">Agentic AI 應用</option>
+            <option value="數據驅動預測">數據驅動預測</option>
+            <option value="流程自動化">流程自動化</option>
+            <option value="生成式 AI 內容">生成式 AI 內容</option>
+          </select>
+        </div>
+
+        <!-- ★ 重要：MBTI 輸入欄位 ★ -->
+        <div class="form-group">
+          <label>你的 MBTI 類型（選填，讓我們更懂你）</label>
+          <select id="mbtiType">
+            <option value="">請選擇</option>
+            <option value="INTJ">🧠 INTJ — 策略家</option>
+            <option value="INTP">🧠 INTP — 思考者</option>
+            <option value="ENTJ">🧠 ENTJ — 指揮官</option>
+            <option value="ENTP">🧠 ENTP — 辯論家</option>
+            <option value="INFJ">💜 INFJ — 提倡者</option>
+            <option value="INFP">💜 INFP — 調停者</option>
+            <option value="ENFJ">💜 ENFJ — 教育家</option>
+            <option value="ENFP">💜 ENFP — 競選者</option>
+            <option value="ISTJ">📋 ISTJ — 物流師</option>
+            <option value="ISFJ">📋 ISFJ — 守衛者</option>
+            <option value="ESTJ">📋 ESTJ — 監督者</option>
+            <option value="ESFJ">📋 ESFJ — 執政官</option>
+            <option value="ISTP">🔧 ISTP — 鑑賞家</option>
+            <option value="ISFP">🎨 ISFP — 探險家</option>
+            <option value="ESTP">🔥 ESTP — 企業家</option>
+            <option value="ESFP">🎉 ESFP — 表演者</option>
+          </select>
+        </div>
+
+        <div class="form-group" style="display: flex; align-items: flex-end; justify-content: flex-end;">
+          <button type="button" class="btn-generate" id="generateBtn">✦ 生成專屬報告</button>
+        </div>
+      </div>
+    </form>
+
+    <!-- ===== 報告區 ===== -->
+    <div id="reportContainer">
+      <div class="report-card" id="reportCard">
+
+        <!-- 個人化暖心訊息 -->
+        <div class="personal-message" id="personalMessage">
+          <div class="pm-greeting">親愛的品牌主，</div>
+          <div class="pm-content" id="pmContent">
+            我們感受到你正在努力為 <span class="highlight-pink">你的品牌</span> 找到更好的方向。<br />
+            你的努力與堅持，我們都看見了。這份報告是專屬於你的，請帶著溫暖的心情閱讀。
+          </div>
+        </div>
+
+        <!-- 報告標頭 -->
+        <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:flex-end; margin-bottom:1.8rem; padding-bottom:0.8rem; border-bottom:1px solid #f0e6df;">
+          <div style="font-family:'Noto Serif TC',serif; font-weight:700; font-size:1.8rem; color:#2d2420;">專屬行動指南</div>
+          <div style="font-size:1rem; color:#b8a094; text-align:right; line-height:1.8;">
+            <div id="reportId">報告編號 · Lumi-2026-07-18</div>
+            <div id="reportDate">生成日期 · 2026.07.18</div>
+          </div>
+        </div>
+
+        <!-- 章節 1：公司潛力分析 -->
+        <div class="report-chapter">
+          <div class="ch-number">01</div>
+          <div class="ch-title">你的品牌潛力 ✦ <span class="ch-line"></span></div>
+          <div class="ch-body" id="chPotential">
+            <p>根據你提供的資訊，我們看見了 <span class="highlight">獨特的機會</span> 正在等待被點亮...</p>
+          </div>
+        </div>
+
+        <!-- 章節 2：具體行動指南 -->
+        <div class="report-chapter">
+          <div class="ch-number">02</div>
+          <div class="ch-title">你可以做的 3 件事 <span class="ch-line"></span></div>
+          <div class="ch-body" id="chActions">
+            <p style="color:#7a6a5e; font-size:1.05rem; margin-bottom:0.8rem;">以下行動是專為你設計的，包含 <strong>短期執行計畫</strong> 與 <strong>長期戰略布局</strong>。每一項都有具體步驟、數據支撐、真實案例與名人觀點。</p>
+          </div>
+        </div>
+
+        <!-- 章節 3：量化目標 -->
+        <div class="report-chapter">
+          <div class="ch-number">03</div>
+          <div class="ch-title">你可以追蹤的目標 <span class="ch-line"></span></div>
+          <div class="ch-body" id="chGoals"></div>
+        </div>
+
+        <!-- 鼓勵區 -->
+        <div class="encouragement-block" id="encouragementBlock">
+          <div class="eb-pattern" id="ebPattern">🌸 🌿 🌷 🌱</div>
+          <div class="eb-message" id="ebMessage">
+            「你比你想像中更靠近目標，<br />只是需要有人幫你點亮那條路。」
+          </div>
+        </div>
+
+        <!-- 品牌結尾 -->
+        <div class="brand-closing">
+          <div class="bc-name">簡煦 Lumi Lab</div>
+          <div class="bc-slogan">Light your way to achievable goals</div>
+        </div>
+
+        <!-- 快樂小事 + 音樂推薦 -->
+        <div class="joy-section">
+          <div class="joy-item">
+            <div class="joy-label">✧ 你現在就可以快樂</div>
+            <div class="joy-content" id="joyAction">買一瓶你最喜歡的飲料，為自己乾杯 🥂</div>
+          </div>
+          <div class="joy-item">
+            <div class="joy-label">✧ 為你推薦的音樂</div>
+            <div class="joy-content" id="songRecommendation">
+              〈Beautiful Day〉
+              <span class="song-artist">— U2</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!--  ★ MBTI 獨立區塊（顯示 MBTI 分析結果）                      -->
+  <!-- ============================================================ -->
+  <div class="mbti-section">
+    <div class="section-label">✦ 你的決策思維 · MBTI 分析</div>
+    <div class="mbti-block" id="mbtiBlock">
+      <div class="mbti-title"><span class="mbti-icon">🧠</span> 決策思維分析</div>
+      <div class="mbti-body" id="mbtiBody">
+        <p>請在上方表單中選擇你的 MBTI 類型，我們將為你分析當前的思維困局與突破方向。</p>
+        <p style="margin-top:0.4rem; color:#7a6a5e;">💡 如果你還不知道自己的 MBTI，可以忽略這個部分，我們仍然會給你溫暖的建議。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!--  ★ 塔羅牌獨立區塊                                            -->
+  <!-- ============================================================ -->
+  <div class="tarot-section">
+    <div class="section-label">✦ 給你的塔羅指引</div>
+    <div class="tarot-block">
+      <div class="tarot-title">🃏 抽一張牌，給自己一點指引</div>
+      <div class="tarot-sub">心中默念你的困惑，讓塔羅牌給你一點方向</div>
+      <button class="tarot-btn" id="tarotBtn">✦ 抽一張牌</button>
+      <div class="tarot-result" id="tarotResult">
+        <span class="tarot-card-display" id="tarotCard">🌙</span>
+        <div class="tarot-name" id="tarotName">月亮</div>
+        <div class="tarot-meaning" id="tarotMeaning">
+          <div class="meaning-section"><strong>✦ 牌義解讀：</strong>牌義內容</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!--  ★ 戰略情報庫                                                -->
+  <!-- ============================================================ -->
+  <div class="secondary-section">
+    <div class="sec-label">✦ 戰略情報庫 · Strategic Intelligence Library</div>
+    <div class="library-grid">
+      <div class="lib-card">
+        <div class="lc-title">產業決策數據 <span class="lc-badge">Bloomberg</span></div>
+        <div class="lc-desc">產業鏈利潤分佈、市佔率變動、資本流動季度透視。</div>
+        <div class="lc-links">
+          <a href="https://www.bloomberg.com/professional/solution/data-management/" target="_blank">Bloomberg 數據平台</a>
+          <a href="https://www.statista.com/statistics/" target="_blank">Statista 產業統計</a>
+          <a href="https://www.imf.org/en/Data" target="_blank">IMF 全球經濟數據</a>
+        </div>
+      </div>
+      <div class="lib-card">
+        <div class="lc-title">巨頭實戰庫 <span class="lc-badge">案例</span></div>
+        <div class="lc-desc">Apple · TSMC · Uniqlo · LVMH 等 40+ 企業的決策案例。</div>
+        <div class="lc-links">
+          <a href="https://hbr.org/topic/business-case" target="_blank">哈佛商業評論 · 商業案例</a>
+          <a href="https://www.mckinsey.com/featured-insights" target="_blank">麥肯錫 · 產業洞察</a>
+          <a href="https://www.bcg.com/publications" target="_blank">BCG · 戰略報告</a>
+        </div>
+      </div>
+      <div class="lib-card">
+        <div class="lc-title">趨勢即時脈動 <span class="lc-badge">AI</span></div>
+        <div class="lc-desc">全球 200+ 新聞源，每日辨識新興技術週期。</div>
+        <div class="lc-links">
+          <a href="https://www.gartner.com/en/insights" target="_blank">Gartner 趨勢報告</a>
+          <a href="https://www.reuters.com/technology/" target="_blank">Reuters 科技新聞</a>
+          <a href="https://spectrum.ieee.org/" target="_blank">IEEE Spectrum 科技動態</a>
+        </div>
+      </div>
+      <div class="lib-card">
+        <div class="lc-title">名人語錄 · 判斷 <span class="lc-badge">典藏</span></div>
+        <div class="lc-desc">巴菲特 · 納德拉 · 張忠謀 等領袖的決策思維框架。</div>
+        <div class="lc-links">
+          <a href="https://www.berkshirehathaway.com/letters/letters.html" target="_blank">巴菲特股東信全集</a>
+          <a href="https://www.microsoft.com/en-us/investor/annual-reports.aspx" target="_blank">微軟年度報告</a>
+          <a href="https://www.tsmc.com/static/english/careers/tsmc_leadership.html" target="_blank">TSMC 領導哲學</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <div class="footer-note">
+    <div>簡煦 Lumi Lab · 以煦光般的支持，陪你在複雜商業中做出清晰決策。</div>
+    <div>數據有溫度 · 決策有底蘊</div>
+    <div style="font-size:0.85rem; color:#c4b4a8;">資料庫更新至 2026.07</div>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!--  JAVASCRIPT                                                   -->
+<!-- ============================================================ -->
+<script>
+  // ===== 字數計算 =====
+  function updateCharCount(el) {
+    const countEl = document.getElementById('charCount');
+    if (countEl) countEl.textContent = el.value.length;
+  }
+
+  // ===== 音樂推薦庫 =====
+  const songLibrary = [
+    { mood: '迷茫', song: '〈Fix You〉', artist: 'Coldplay', desc: '溫暖而堅定的陪伴' },
+    { mood: '焦慮', song: '〈Three Little Birds〉', artist: 'Bob Marley', desc: '一切都會沒事的' },
+    { mood: '疲憊', song: '〈Rise Up〉', artist: 'Andra Day', desc: '給自己一個擁抱' },
+    { mood: '孤單', song: '〈You\'ve Got a Friend〉', artist: 'Carole King', desc: '你不是一個人' },
+    { mood: '停滯', song: '〈Don\'t Stop Believin\'〉', artist: 'Journey', desc: '繼續相信' },
+    { mood: '壓力', song: '〈Weightless〉', artist: 'Marconi Union', desc: '最療癒的放鬆音樂' },
+    { mood: '勇氣', song: '〈Brave〉', artist: 'Sara Bareilles', desc: '勇敢去做' },
+    { mood: '希望', song: '〈Here Comes the Sun〉', artist: 'The Beatles', desc: '太陽總會升起' },
+    { mood: '成長', song: '〈Grow〉', artist: 'Frances', desc: '慢慢來，比較快' },
+    { mood: '溫暖', song: '〈You Are My Sunshine〉', artist: 'Johnny Cash', desc: '溫暖的陪伴' },
+  ];
+
+  // ===== 快樂小事庫 =====
+  const joyActions = [
+    '買一瓶你最喜歡的飲料，為自己乾杯 🥂',
+    '站起來，對鏡子裡的自己比一個大大的愛心 ❤️',
+    '閉上眼睛，深呼吸三次，跟自己說「我已經很棒了」',
+    '打開窗戶，讓陽光照進來，曬曬你的笑容 ☀️',
+    '播放你最愛的輕音樂，跟著節奏輕輕擺動 🎵',
+    '寫下一件今天讓你想微笑的小事 📝',
+    '給自己一個擁抱，跟自己說「辛苦了，我愛你」',
+    '喝一杯溫水，感受暖流經過身體的每一個細胞',
+    '走到戶外，抬頭看看天空，對雲朵笑一個 ☁️',
+    '傳一封感謝的訊息給一個你重視的人 💌',
+    '為自己泡一杯茶，慢慢喝完 🍵',
+    '打開窗戶，大聲唱一首你最喜歡的歌 🎤',
+  ];
+
+  // ===== 塔羅牌庫 =====
+  const tarotCards = [
+    { name: '愚者', emoji: '🌟', meaning: '新的開始，純粹的信念。你正站在一個新的起點，不要害怕未知，用開放的心擁抱可能性。', keywords: '冒險、信念、純真', advice: '勇敢踏出第一步，信任你的直覺。' },
+    { name: '魔術師', emoji: '🪄', meaning: '你擁有實現目標的一切資源。專注、行動、創造，宇宙正在回應你的能量。', keywords: '創造力、專注、行動', advice: '你已經準備好了，現在就是行動的時刻。' },
+    { name: '女祭司', emoji: '🌙', meaning: '信任你的直覺。有些答案不在外在世界，而在你內心深處。安靜下來，聆聽。', keywords: '直覺、內在智慧、寧靜', advice: '每天給自己 10 分鐘安靜的時間，傾聽內心的聲音。' },
+    { name: '皇后', emoji: '🌿', meaning: '豐盛與滋養。你正在創造的價值正在生長，給自己時間，也給自己耐心。', keywords: '豐盛、創造、耐心', advice: '相信你的創造力，讓它自然生長。' },
+    { name: '皇帝', emoji: '⚜️', meaning: '結構與秩序。你需要建立穩固的基礎，制定清晰的規則，讓事情有條不紊地前進。', keywords: '結構、秩序、基礎', advice: '為你的目標建立一個清晰的計劃框架。' },
+    { name: '教皇', emoji: '📜', meaning: '尋找導師與智慧。有些問題需要請教過來人，不要害怕尋求幫助。', keywords: '學習、導師、傳統', advice: '找到一位值得信賴的導師，向他們學習。' },
+    { name: '戀人', emoji: '💕', meaning: '選擇與連結。你正站在一個重要的十字路口，傾聽你的心，選擇與你價值觀一致的方向。', keywords: '選擇、連結、價值觀', advice: '做出忠於自己內心的選擇。' },
+    { name: '戰車', emoji: '⚔️', meaning: '決心與掌控。你已經具備了前進的動力，現在需要的是專注與堅持，勝利在望。', keywords: '決心、專注、勝利', advice: '保持專注，堅持到底。' },
+    { name: '力量', emoji: '🦁', meaning: '溫柔的勇氣。真正的力量不是壓制，而是包容。用溫暖的心面對眼前的挑戰。', keywords: '勇氣、溫柔、包容', advice: '用溫柔的力量面對挑戰。' },
+    { name: '隱士', emoji: '🏔️', meaning: '沉思與智慧。這是一個退一步審視的時刻，你需要安靜地梳理自己的方向。', keywords: '沉思、智慧、內省', advice: '給自己一些安靜的時間，重新審視方向。' },
+    { name: '命運之輪', emoji: '🎡', meaning: '變化與機遇。命運正在轉動，新的機會即將出現，保持開放與靈活。', keywords: '變化、機遇、命運', advice: '保持開放的心態，迎接新的可能性。' },
+    { name: '正義', emoji: '⚖️', meaning: '平衡與真相。該是真實面對的時候了，釐清事實，做出公平的決定。', keywords: '平衡、真相、公平', advice: '誠實面對自己和他人。' },
+    { name: '倒吊人', emoji: '🔮', meaning: '換個角度看世界。有時候停下來，從不同視角審視，反而能看到新的出路。', keywords: '視角、暫停、洞察', advice: '試著從別人的角度思考問題。' },
+    { name: '死神', emoji: '🌅', meaning: '結束與重生。舊的正在過去，新的正在來臨。不要害怕放下，因為更好的即將到來。', keywords: '結束、重生、轉變', advice: '勇敢地放下過去，迎接新的開始。' },
+    { name: '節制', emoji: '🌊', meaning: '平衡與調和。在對立之間找到平衡點，中庸之道往往是最穩固的選擇。', keywords: '平衡、調和、中庸', advice: '尋找對立之間的和諧點。' },
+    { name: '惡魔', emoji: '⛓️', meaning: '覺察你的束縛。有些限制是自己給自己的，認清它，你就能解脫。', keywords: '束縛、覺察、解脫', advice: '認清那些限制你的信念，釋放它。' },
+    { name: '高塔', emoji: '⚡', meaning: '突如其來的改變。可能讓你措手不及，但也是重建更好未來的契機。', keywords: '改變、突破、重建', advice: '接受改變，相信重建的可能性。' },
+    { name: '星星', emoji: '⭐', meaning: '希望與靈感。你的心願正在被聽見，保持信念，繼續前行。', keywords: '希望、靈感、信念', advice: '保持信念，你的心願正在實現的路上。' },
+    { name: '月亮', emoji: '🌙', meaning: '潛意識的探索。有些答案藏在表面之下，信任你的直覺，它會帶你找到真相。', keywords: '直覺、潛意識、探索', advice: '信任你的直覺，它會帶領你找到答案。' },
+    { name: '太陽', emoji: '☀️', meaning: '成功與喜悅。陽光正在照耀你，享受這份溫暖與成就感吧。', keywords: '成功、喜悅、溫暖', advice: '享受你的成功，為自己感到驕傲。' },
+    { name: '審判', emoji: '📯', meaning: '覺醒與反省。這是一個重新評估的時刻，聽從內心的呼喚，做出真誠的選擇。', keywords: '覺醒、反省、重生', advice: '重新審視你的選擇，做出真誠的決定。' },
+    { name: '世界', emoji: '🌍', meaning: '完成與整合。一個階段的圓滿結束，你已經準備好迎接新的旅程。', keywords: '完成、整合、新旅程', advice: '慶祝你的完成，準備迎接新的開始。' },
+    { name: '權杖王牌', emoji: '🔥', meaning: '行動的開始。一個新的計畫或階段即將展開，充滿活力與潛力。', keywords: '行動、開始、活力', advice: '現在就是開始的最佳時機。' },
+    { name: '聖杯王牌', emoji: '💧', meaning: '情感的新開始。一段新的關係或情感連結即將展開，帶著愛與溫暖。', keywords: '情感、連結、愛', advice: '打開你的心，迎接新的情感連結。' },
+    { name: '寶劍王牌', emoji: '🗡️', meaning: '清晰的思維。一個重要的決定或想法將浮現，帶來清晰與方向。', keywords: '清晰、決定、方向', advice: '相信你的判斷，做出清晰的決定。' },
+    { name: '錢幣王牌', emoji: '🪙', meaning: '物質的新開始。財富、工作或資源的機會即將出現，值得把握。', keywords: '財富、機會、資源', advice: '把握眼前的機會，為未來奠定基礎。' },
+  ];
+
+  // ===== MBTI 資料庫 =====
+  const mbtiData = {
+    'INTJ': { icon: '🧠', name: '策略家', trait: '獨立思考、長遠規劃', trap: '容易過度分析、忽略執行細節', advice: '把 50% 的精力從規劃轉移到執行，先求有再求好。', future: '系統性地執行你的願景，每週至少完成 3 個具體行動。' },
+    'INTP': { icon: '🧠', name: '思考者', trait: '邏輯分析、好奇心強', trap: '過度追求完美、拖延啟動', advice: '設定 20 分鐘的計時器，先做再說，不完美也沒關係。', future: '選擇一個你最感興趣的領域，深入研究並產出一個具體作品。' },
+    'ENTJ': { icon: '🧠', name: '指揮官', trait: '領導力強、目標導向', trap: '容易忽略他人感受、過度控制', advice: '試著每週問團隊成員 3 個開放式問題，練習傾聽。', future: '建立一個支持系統，讓團隊有更多自主決策的空間。' },
+    'ENTP': { icon: '🧠', name: '辯論家', trait: '創意無限、喜歡挑戰', trap: '想法太多、難以聚焦', advice: '選一個想法，專注執行 30 天，其他的先寫下來以後再說。', future: '把你的創造力轉化為可交付的產品或服務。' },
+    'INFJ': { icon: '💜', name: '提倡者', trait: '理想主義、善解人意', trap: '過度在意他人評價、自我犧牲', advice: '把「自己的需求」也放進優先清單的第一順位。', future: '找到一個能同時實現價值與自我成長的長期專案。' },
+    'INFP': { icon: '💜', name: '調停者', trait: '價值驅動、富有創意', trap: '容易理想化、不擅長商業化', advice: '找一個商業夥伴幫你把創意轉化為商業模式。', future: '學習基礎商業知識，讓你的理想可以持續發光。' },
+    'ENFJ': { icon: '💜', name: '教育家', trait: '鼓舞人心、組織能力強', trap: '容易過度付出、忽略自己', advice: '每天留 30 分鐘給自己，做一件只為你快樂的事。', future: '建立一個團隊文化，讓每個人都能發揮所長。' },
+    'ENFP': { icon: '💜', name: '競選者', trait: '熱情洋溢、適應力強', trap: '容易三分鐘熱度、缺乏系統性', advice: '為你的熱情建立一個「執行系統」，讓靈感可以落地。', future: '專注在一個專案上至少 3 個月，建立深度的影響力。' },
+    'ISTJ': { icon: '📋', name: '物流師', trait: '務實可靠、注重細節', trap: '過於保守、害怕改變', advice: '每週嘗試一件你從未做過的小事，建立改變的信心。', future: '在穩定的基礎上，逐步導入新嘗試，建立「安全創新」模式。' },
+    'ISFJ': { icon: '📋', name: '守衛者', trait: '溫柔細心、忠誠可靠', trap: '容易忽略自己、過度迎合他人', advice: '每天寫下一件「為自己」做的事，慢慢練習照顧自己。', future: '把你細膩的觀察力轉化為品牌的獨特優勢。' },
+    'ESTJ': { icon: '📋', name: '監督者', trait: '高效務實、擅長管理', trap: '容易忽略軟性因素、過度強硬', advice: '在決策前，先問「這樣做團隊的感受是什麼？」', future: '建立一個既有紀律又有溫度的團隊文化。' },
+    'ESFJ': { icon: '📋', name: '執政官', trait: '溫暖貼心、擅長協調', trap: '容易過度介入、不善於拒絕', advice: '練習說「不」，把精力留給最重要的事。', future: '運用你的協調能力，建立堅實的夥伴關係。' },
+    'ISTP': { icon: '🔧', name: '鑑賞家', trait: '冷靜務實、喜歡動手', trap: '容易孤僻、不善溝通', advice: '每週主動分享一次你的工作進度，練習表達。', future: '把你的專業技能打造成一個可複製的產品。' },
+    'ISFP': { icon: '🎨', name: '探險家', trait: '溫柔敏感、藝術感強', trap: '容易自我懷疑、不敢行動', advice: '每天完成一件最小可行的事，建立行動的信心。', future: '把你的美感與感受力，轉化為品牌的核心差異。' },
+    'ESTP': { icon: '🔥', name: '企業家', trait: '果斷冒險、行動力強', trap: '容易衝動、忽略長期規劃', advice: '在行動前，先花 10 分鐘思考「這個決定 3 個月後會如何？」', future: '建立長期視野，把你的行動力導向累積性的成長。' },
+    'ESFP': { icon: '🎉', name: '表演者', trait: '熱情活潑、感染力強', trap: '容易分心、缺乏專注', advice: '每天專注一個任務 25 分鐘，逐步建立專注力。', future: '把你的感染力轉化為品牌故事，讓更多人被你的熱情打動。' },
+  };
+
+  // ================================================================
+  //  ★ 生成報告（主要邏輯）                                        ★
+  // ================================================================
+  document.getElementById('generateBtn').addEventListener('click', function() {
+    console.log('👉 生成報告按鈕被點擊！');
+
+    const industry = document.getElementById('industry').value || '你的產業';
+    const scale = document.getElementById('scale').value || '你的公司規模';
+    const businessDesc = document.getElementById('businessDesc').value || '你正在努力打造一個有意義的品牌';
+    const worries = document.getElementById('worries').value || '正在尋找更好的方向';
+    const customer = document.getElementById('customer').value || '一群重視品質與感受的人';
+    const competitor = document.getElementById('competitor').value || '市場上的其他玩家';
+    const budget = document.getElementById('budget').value || '10,000–50,000';
+    const timeline = document.getElementById('timeline').value || '中期規劃';
+    const aiPref = document.getElementById('aiPref').value || '最適技術組合';
+    const mbtiType = document.getElementById('mbtiType').value || '';
+
+    console.log('📝 輸入值：', { industry, scale, businessDesc, worries, customer, competitor, budget, timeline, aiPref, mbtiType });
+
+    const worrySentences = worries.split(/[，,。.、\n]/).filter(s => s.trim().length > 0);
+    const firstWorry = worrySentences.length > 0 ? worrySentences[0].trim() : '你正在面對的挑戰';
+    const shortWorry = firstWorry.length > 25 ? firstWorry.substring(0, 25) + '...' : firstWorry;
+
+    document.getElementById('pmContent').innerHTML = `
+      我們感受到你正在努力為 <span class="highlight-pink">「${industry}」</span> 找到更好的方向。<br />
+      你提到 <span class="highlight-pink">「${shortWorry}」</span> — 這其實是每一個認真經營品牌的人都會遇到的關卡。<br /><br />
+      請記得，<strong>你不是卡住了，你只是在準備起飛</strong>。<br />
+      這份報告是專屬於你的，裡面有 <span class="highlight-pink">3 個具體行動指南</span>，<br />
+      每一個都是根據你的產業、你的擔憂、你的資源所設計的。<br /><br />
+      🌸 帶著溫暖的心情閱讀吧，我們陪你一起前進。
+    `;
+
+    const potentialTexts = [
+      `在「${industry}」這個領域，你已經走在很多人的前面了。`,
+      `你對「${customer}」的理解，是你最珍貴的資產。`,
+      `面對「${competitor}」的競爭，你選擇的不是模仿，而是走出自己的路。`,
+      `你願意誠實面對「${shortWorry}」，這本身就是一種領導者的勇氣。`,
+      `你的品牌正在慢慢形成自己的聲音，這需要時間，但值得等待。`,
+    ];
+    const randomPotential = potentialTexts[Math.floor(Math.random() * potentialTexts.length)];
+
+    document.getElementById('chPotential').innerHTML = `
+      <p>我們仔細閱讀了你提供的資訊：</p>
+      <p style="background:#f8f0ea; border-radius:18px; padding:1rem 1.6rem; margin:0.6rem 0; font-size:1.1rem; color:#5a4a3e; line-height:1.9;">
+        「${businessDesc.length > 80 ? businessDesc.substring(0, 80) + '...' : businessDesc}」
+      </p>
+      <p>我們看見了 <span class="highlight">3 個獨特的機會點</span>：</p>
+      <ul style="margin-left:1.6rem; font-size:1.1rem; color:#3d322c; list-style-type:'✦ '; line-height:2.2;">
+        <li><strong>你的市場定位</strong> — 你對「${customer}」的描繪非常具體，這已經具備了差異化的基礎</li>
+        <li><strong>你的問題意識</strong> — 你清楚知道「${shortWorry}」，這比盲目行動重要得多</li>
+        <li><strong>你的資源彈性</strong> — 在 ${budget} 的預算下，你有足夠的空間進行小規模測試</li>
+      </ul>
+      <p style="margin-top:0.6rem;">${randomPotential}</p>
+    `;
+
+    const actions = [
+      {
+        name: `更靠近「${customer}」— 建立顧客洞察與體驗優化系統`,
+        desc: `與其猜測顧客想要什麼，不如建立一套系統化的方式去理解他們。這不只是做問卷，而是深入他們的日常。`,
+        steps: [
+          'Step 1 · 顧客訪談（第 1–2 週）：邀請 5–8 位典型顧客進行深度訪談，了解他們的真實困擾、使用場景與決策過程。',
+          'Step 2 · 旅程地圖繪製（第 3 週）：將訪談結果轉化為視覺化的顧客旅程地圖，標示出 3–5 個痛點與機會點。',
+          'Step 3 · 體驗快測（第 4–6 週）：針對 1 個最關鍵的痛點，設計一個快速解決方案並進行測試。',
+          'Step 4 · 數據化追蹤（第 7–12 週）：建立顧客滿意度與 NPS 的持續追蹤機制，每週檢討一次。'
+        ],
+        why: `當你真的了解顧客的日常，你的產品和服務自然會貼近他們的需要。${industry} 產業中，那些真正在乎顧客的品牌，顧客會一來再來。`,
+        data: `根據 Forrester 研究，在乎顧客體驗的品牌，顧客回購率比一般品牌高出 2.3 倍。Walmart 在 2025 年導入顧客體驗優化後，會員 LTV 提升 22%。`,
+        trend: `2026 年的趨勢是「情感數據」— 不只是顧客買了什麼，而是他們為什麼買、怎麼買、感受如何。品牌正在從「交易導向」轉向「關係導向」。`,
+        celebrity: `「顧客不是數字，他們是帶著故事走進你店裡的人。」— 星巴克前執行長 Howard Schultz`,
+        path: `第一步：定義你最想了解的 3 個問題 → 第二步：找 5 位顧客深度訪談 → 第三步：整理洞察並設計 1 個測試 → 第四步：觀察結果並調整`,
+        pathLink: `https://www.nngroup.com/articles/customer-observation/`,
+        time: '短期 1–3 個月',
+        budget: budget
+      },
+      {
+        name: `針對「${shortWorry}」，導入 AI 輔助決策與數據優化`,
+        desc: `利用 ${aiPref} 技術，針對你最煩惱的問題進行數據診斷與策略建議，讓決策有數據支撐。`,
+        steps: [
+          'Step 1 · 數據盤點（第 1–2 週）：盤點你現有的顧客數據、銷售數據、社群數據，找出目前最完整的數據來源。',
+          'Step 2 · 定義關鍵問題（第 3 週）：將「${shortWorry}」拆解成 3–5 個具體的數據問題（例如：哪些顧客流失最快？哪個渠道轉換率最高？）。',
+          'Step 3 · AI 輔助分析（第 4–6 週）：使用 AI 工具進行數據分析，找出隱藏的模式與洞察。',
+          'Step 4 · 策略校準（第 7–12 週）：根據 AI 洞察，調整你的行銷策略、產品定位或服務流程。'
+        ],
+        why: `BCG 研究指出，AI 導入可將決策效率提升 40–60%。特別是在 ${industry} 領域，AI 驅動的決策可減少 70% 的試錯成本。`,
+        data: `亞馬遜 2025 年透過 AI 優化供應鏈與定價，節省約 15 億美元營運成本，同時毛利率提升 4.2%。`,
+        trend: `2026 年 AI 的關鍵詞是「可解釋性 AI」— 不只是告訴你「做什麼」，而是告訴你「為什麼這樣做」。品牌正在用 AI 建立更透明的決策流程。`,
+        celebrity: `「AI 不會取代你，但會用 AI 的人會。」— 微軟執行長 Satya Nadella`,
+        path: `第一步：確認你現有的數據工具 → 第二步：選擇 1 個最困擾的決策問題 → 第三步：用 AI 進行小規模測試 → 第四步：驗證結果後擴大應用`,
+        pathLink: `https://hbr.org/2025/01/how-to-start-with-ai-in-your-business`,
+        time: '中期 3–6 個月',
+        budget: budget
+      },
+      {
+        name: `建立「${customer}」專屬的品牌社群與口碑生態系`,
+        desc: `不只是在社群上發文，而是建立一個讓「${customer}」願意主動參與、分享、推薦的品牌生態系。`,
+        steps: [
+          'Step 1 · 社群價值定義（第 1–2 週）：明確你的社群要為「${customer}」解決什麼問題、帶來什麼價值。',
+          'Step 2 · 核心成員招募（第 3–6 週）：邀請 20–30 位最熱情的顧客成為「品牌大使」，給予他們專屬的體驗與回饋。',
+          'Step 3 · 共創活動設計（第 7–12 週）：設計 2–3 個讓顧客參與的活動（如：產品開發共創、社群專屬活動、用戶故事徵集）。',
+          'Step 4 · 口碑循環建立（第 13–24 週）：建立推薦獎勵機制，讓顧客願意主動分享你的品牌。'
+        ],
+        why: `根據 Forrester 研究，社群共鳴可提升品牌忠誠度達 35%。${industry} 產業中，社群導向的品牌回購率高出傳統品牌 2.3 倍。`,
+        data: `Lululemon 透過社群策略，顧客 NPS 高達 75（產業平均 45），且會員年消費額為非會員的 3.2 倍。`,
+        trend: `2026 年的社群趨勢是「微型社群」— 與其追求百萬粉絲，不如建立 1,000 個真正熱愛你的鐵粉。深度比廣度更重要。`,
+        celebrity: `「品牌不是你說你是什麼，而是你的顧客說你是什麼。」— 品牌大師 Marty Neumeier`,
+        path: `第一步：定義你的社群核心價值 → 第二步：找到第一批 10 位核心顧客 → 第三步：設計一個讓他們驚喜的體驗 → 第四步：鼓勵他們分享故事`,
+        pathLink: `https://www.socialmediaexaminer.com/community-building-strategy/`,
+        time: '長期 6–12 個月',
+        budget: budget
+      }
+    ];
+
+    let actionHTML = '';
+    actions.forEach((a, i) => {
+      actionHTML += `
+        <div class="action-guide">
+          <div class="ag-header">
+            <span class="ag-num">行動 0${i+1}</span>
+            <span class="ag-name">${a.name}</span>
+          </div>
+          <div class="ag-desc">${a.desc}</div>
+          <div class="ag-steps">
+            ${a.steps.map(s => {
+              const parts = s.split('：');
+              return `<div class="step-item"><span class="step-label">${parts[0]}</span><span class="step-detail">：${parts.slice(1).join('：')}</span></div>`;
+            }).join('')}
+          </div>
+          <div class="ag-why"><strong>✦ 為什麼這樣做？</strong> ${a.why}</div>
+          <div class="ag-data"><strong>📊 真實數據支撐：</strong> ${a.data}</div>
+          <div class="ag-trend"><strong>📈 2026 趨勢：</strong> ${a.trend}</div>
+          <div class="ag-celebrity">「${a.celebrity}」</div>
+          <div class="ag-path"><strong>🛤️ 具體執行路徑：</strong> ${a.path} <a href="${a.pathLink}" target="_blank" class="path-link">[參考方法]</a></div>
+          <div class="ag-meta">
+            <span class="meta-tag">⏱ 建議時程：${a.time}</span>
+            <span class="meta-tag">💰 預算區間：${a.budget}</span>
+          </div>
+        </div>
+      `;
+    });
+    document.getElementById('chActions').innerHTML = `
+      <p style="color:#7a6a5e; font-size:1.05rem; margin-bottom:0.8rem;">以下行動是專為你設計的，包含 <strong>短期執行計畫</strong> 與 <strong>長期戰略布局</strong>。每一項都有具體步驟、數據支撐、真實案例與名人觀點。</p>
+      ${actionHTML}
+    `;
+
+    const goals = [
+      { name: '顧客留存率提升 15%', priority: '🎯 最優先 — 這是所有成長的基礎', explain: '這代表你原本的顧客中，有多少比例願意繼續跟你買。留一個舊顧客比開發一個新顧客省 5–7 倍的錢。', link: 'https://www.forbes.com/sites/forbesbusinesscouncil/2024/customer-retention-strategies/' },
+      { name: '每月新顧客數穩定增加 10%', priority: '📌 第二優先 — 穩定的新客流代表品牌正在健康成長', explain: '這不是追求暴增，而是持續穩定的成長。每月 10% 的成長，一年下來就是 3 倍。', link: 'https://www.investopedia.com/terms/g/growth-rate.asp' },
+      { name: '顧客推薦率提升至 40%', priority: '📌 第三優先 — 最好的行銷是你的顧客幫你說話', explain: '這代表有多少比例的顧客願意主動推薦你。口碑是最有力量、也最省錢的行銷。', link: 'https://www.npsbenchmarks.com/' },
+      { name: '每次顧客消費金額成長 10%', priority: '📌 第四優先 — 讓喜歡你的人買更多', explain: '不一定要一直開發新顧客，讓既有的顧客買更多、買更貴，也是一種成長。', link: 'https://www.shopify.com/blog/average-order-value' }
+    ];
+
+    let goalHTML = `
+      <p style="font-size:1.05rem; color:#7a6a5e; margin-bottom:0.8rem;">以下是根據你的產業與資源，建議你追蹤的 4 個目標：</p>
+      <div class="goal-list">
+        ${goals.map(g => `
+          <div class="goal-item">
+            <strong>${g.name}</strong>
+            <span class="goal-priority">${g.priority}</span>
+            <span class="goal-explain">💡 ${g.explain}</span>
+            <a href="${g.link}" target="_blank" class="goal-link">📖 了解如何計算 →</a>
+          </div>
+        `).join('')}
+      </div>
+      <p style="margin-top:0.8rem; font-size:1.05rem; color:#5a4a3e; background:#f8f0ea; border-radius:18px; padding:0.8rem 1.6rem;">
+        <span class="highlight">✦ 建議先從「顧客留存率」開始</span> — 因為它是所有成長的根基。<br />
+        先讓已經喜歡你的人留下來，再談吸引新的人。這是最省力、也最有效的起點。
+      </p>
+    `;
+    document.getElementById('chGoals').innerHTML = goalHTML;
+
+    if (mbtiType && mbtiData[mbtiType]) {
+      const m = mbtiData[mbtiType];
+      document.getElementById('mbtiBody').innerHTML = `
+        <p><span style="font-size:2.4rem;">${m.icon}</span> <strong>你的 MBTI 類型：${mbtiType} — ${m.name}</strong></p>
+        <p>✨ <strong>你的優勢：</strong>${m.trait}</p>
+        <p>🌱 <strong>你當前的思維困局：</strong>${m.trap}</p>
+        <p>🛤️ <strong>突破方向：</strong>${m.advice}</p>
+        <p>🌟 <strong>未來建議：</strong>${m.future}</p>
+        <p style="margin-top:0.6rem; font-size:1.05rem; color:#7a6a5e;">💡 結合你提到的「${shortWorry}」，這個建議特別適合你現在的情況。</p>
+      `;
+    } else {
+      document.getElementById('mbtiBody').innerHTML = `
+        <p>💡 你沒有選擇 MBTI 類型，但我們還是想跟你說：</p>
+        <p>每個人都有自己獨特的思維方式，重要的是 <span class="mbti-highlight">理解自己</span>，然後找到適合自己的節奏。</p>
+        <p style="margin-top:0.4rem;">你提到的「${shortWorry}」，我們認為你已經在正確的路上了。給自己多一點時間，你比你以為的更強大。</p>
+      `;
+    }
+
+    const patterns = ['🌸 🌿 🌷 🌱', '🌻 🌺 🍃 🌼', '🌾 🌷 🌿 🌸', '🌱 🌸 🌻 🌿', '🌷 🌿 🌾 🌺', '🌸 🌻 🌿 🌷'];
+    const randomPattern = patterns[Math.floor(Math.random() * patterns.length)];
+    const encouragementMessages = [
+      `親愛的品牌主，<br />「${shortWorry}」— 這不是你的終點，而是你故事的轉折點。<br />你已經走在正確的路上，只是需要一點點耐心。`,
+      `你正在為「${industry}」注入新的可能性，<br />而「${shortWorry}」正是你即將突破的信號。<br />繼續往前走吧，每一步都算數。`,
+      `當你開始正視「${shortWorry}」的那一刻，<br />你就已經比 80% 的人更勇敢了。<br />繼續前進，你值得看到自己的開花。`,
+      `你的事業就像一朵花，<br />「${shortWorry}」只是它綻放前的那場雨。<br />雨停了，陽光就會來。`,
+      `親愛的你，<br />「${shortWorry}」其實是一個禮物 — 它在提醒你，<br />你值得擁有更好的方法，更好的結果。`,
+    ];
+    const randomMsg = encouragementMessages[Math.floor(Math.random() * encouragementMessages.length)];
+    document.getElementById('ebPattern').textContent = randomPattern;
+    document.getElementById('ebMessage').innerHTML = randomMsg;
+
+    const randomJoy = joyActions[Math.floor(Math.random() * joyActions.length)];
+    document.getElementById('joyAction').textContent = randomJoy;
+
+    let mood = '希望';
+    const worryLower = worries.toLowerCase();
+    if (worryLower.includes('迷茫') || worryLower.includes('不知道') || worryLower.includes('方向')) mood = '迷茫';
+    else if (worryLower.includes('焦慮') || worryLower.includes('壓力') || worryLower.includes('緊張')) mood = '焦慮';
+    else if (worryLower.includes('累') || worryLower.includes('疲') || worryLower.includes('倦')) mood = '疲憊';
+    else if (worryLower.includes('孤單') || worryLower.includes('一個人') || worryLower.includes('獨')) mood = '孤單';
+    else if (worryLower.includes('停滯') || worryLower.includes('卡') || worryLower.includes('動不了')) mood = '停滯';
+    else if (worryLower.includes('勇氣') || worryLower.includes('害怕') || worryLower.includes('擔心')) mood = '勇氣';
+    else if (worryLower.includes('成長') || worryLower.includes('學習')) mood = '成長';
+    else if (worryLower.includes('壓力') || worryLower.includes('沉重')) mood = '壓力';
+    else mood = '溫暖';
+    const matchedSong = songLibrary.find(s => s.mood === mood) || songLibrary[8];
+    document.getElementById('songRecommendation').innerHTML = `
+      ${matchedSong.song}
+      <span class="song-artist">— ${matchedSong.artist} · ${matchedSong.desc}</span>
+    `;
+
+    const now = new Date();
+    document.getElementById('reportId').textContent = `報告編號 · Lumi-${now.toISOString().slice(0,10).replace(/-/g,'')}`;
+    document.getElementById('reportDate').textContent = `生成日期 · ${now.toISOString().slice(0,10).replace(/-/g,'.')}`;
+
+    const container = document.getElementById('reportContainer');
+    container.style.display = 'block';
+    container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    console.log('✅ 報告生成完成！');
+  });
+
+  document.getElementById('tarotBtn').addEventListener('click', function() {
+    const randomTarot = tarotCards[Math.floor(Math.random() * tarotCards.length)];
+    document.getElementById('tarotCard').textContent = randomTarot.emoji;
+    document.getElementById('tarotName').textContent = randomTarot.name;
+    document.getElementById('tarotMeaning').innerHTML = `
+      <div class="meaning-section"><strong>✦ 核心牌義：</strong>${randomTarot.meaning}</div>
+      <div class="meaning-section"><strong>✦ 關鍵字：</strong>${randomTarot.keywords}</div>
+      <div class="meaning-section"><strong>✦ 給你的建議：</strong>${randomTarot.advice}</div>
+    `;
+    document.getElementById('tarotResult').style.display = 'block';
+    const result = document.getElementById('tarotResult');
+    result.style.animation = 'none';
+    setTimeout(() => { result.style.animation = 'fadeUp 0.6s ease'; }, 10);
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('tarotResult').style.display = 'none';
+    console.log('🌿 簡煦 Lumi Lab 已載入完成！');
+  });
+</script>
+
+</body>
+</html>
